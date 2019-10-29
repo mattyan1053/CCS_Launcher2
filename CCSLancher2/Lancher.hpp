@@ -1,11 +1,13 @@
 # pragma once
 # include <Siv3D.hpp>
 # include "GameData.hpp"
+# include "Scene.hpp"
 
 class Lancher {
 
 private:
-	GameData m_games;
+	
+	LancherManager m_manager;
 
 public:
 
@@ -13,9 +15,7 @@ public:
 
 	Lancher(const FilePath& path);
 
-	void update();
-
-	void draw() const;
+	void start();
 
 
 };

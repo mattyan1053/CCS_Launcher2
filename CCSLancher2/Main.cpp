@@ -1,18 +1,25 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.4.0
-# include "Lancher.hpp";
+# include "Lancher.hpp"
+# include "Global.hpp"
+
+Size windowSize = { 1280, 720 };
+Array<Texture> g_frames;
 
 void Main()
 {
-	// 背景を水色にする
-	Scene::SetBackground(ColorF(0.8, 0.9, 1.0));
+
+	Window::SetTitle(U"CCS Launcher");
+
+	Window::Resize(windowSize);
+
+	for (int i = 0; i <= 20; i++) {
+
+		Texture texture(U"resource/launch_anim/00" + Pad(i, { 2, U'0' }) + U".png");
+		g_frames << texture;
+
+	}
 
 	Lancher lancher(U"Game");
 
-	while (System::Update())
-	{
-		
-		lancher.update();
-		lancher.draw();
-		
-	}
+	lancher.start();
 }

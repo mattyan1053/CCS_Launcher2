@@ -16,7 +16,7 @@ struct Game {
 	FilePath rdmPath;
 
 	// readmeの内容
-	String readme;
+	Texture readme;
 
 	// ゲーム開発ツール
 	String tools;

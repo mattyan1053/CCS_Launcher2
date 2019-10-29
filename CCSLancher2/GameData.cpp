@@ -4,24 +4,25 @@ bool IsURL(const FilePath& path) {
 	return path.starts_with(U"http://") || path.starts_with(U"https://");
 }
 
-GameData::GameData(const FilePath& gameDir) : m_homeDir(FileSystem::CurrentDirectory() + gameDir) {
+void GameData::setPath(const FilePath& gameDir) {
+	m_homeDir = FileSystem::CurrentDirectory() + gameDir;
 	if (!FileSystem::Exists(m_homeDir) || !FileSystem::IsDirectory(m_homeDir)) {
 		Print << U"読み込みエラー: Gameディレクトリが存在しません。";
 	}
 }
 
-void GameData::loadGames() {
+void GameData::loadGames() {	
+
+	Font font(15, Typeface::Default);
 
 	// Gameディレクトリ内のゲームを走査
-	for (const FilePath& gameDir : FileSystem::DirectoryContents(m_homeDir)) {
-
+	for (const FilePath& gameDir : FileSystem::DirectoryContents(m_homeDir, false)) {
 		// ディレクトリで無ければスキップ
 		if (!FileSystem::IsDirectory(gameDir)) continue;
-
 		// ini読み込み
 		const INIData ini(gameDir + U"info.ini");
 		if (ini.isEmpty()) {
-			Print << U"エラー: info.iniの読み込みに失敗しました（" + FileSystem::BaseName(gameDir) + U"内）";
+			Print << U"エラー: info.iniの読み込みに失敗しました（" + /*FileSystem::BaseName*/(gameDir) + U"内）";
 			continue;
 		}
 
@@ -37,13 +38,20 @@ void GameData::loadGames() {
 		game.useKeyboard = ini.get<bool>(U"Game.useKeyboard");
 		game.useGamepad = ini.get<bool>(U"Game.useGamepad");
 
-		game.screenshot = Texture(Image(gameDir + ini[U"Game.image"]).squareClipped(), TextureDesc::Mipped);
+		game.screenshot = Texture(gameDir + ini[U"Game.image"], TextureDesc::Mipped);
 		
 		// game.hasMovie = ini.get<bool>(U"Game.hasMovie");
 		
 		game.rdmPath = gameDir + ini[U"Game.readmePath"];
 		TextReader reader(game.rdmPath);
-		game.readme = reader.readAll();
+		String content = reader.readAll();
+
+		Image contentImg;
+		
+		contentImg.resize(font(content).region().size, Palette::White);
+		font(content).
+		font(content).overwrite(contentImg, Point::Zero(), Palette::Black);
+		game.readme = Texture(contentImg);
 
 		const FilePath path = ini[U"Game.path"];
 		if (IsURL(path)) {
@@ -60,6 +68,6 @@ void GameData::loadGames() {
 
 }
 
-const Array<Game>& GameData::getList() {
+const Array<Game>& GameData::getList() const {
 	return m_list;
 }

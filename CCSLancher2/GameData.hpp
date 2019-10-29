@@ -9,16 +9,16 @@ private:
 	Array<Game> m_list;
 
 	// ゲームのディレクトリがあるディレクトリ
-	const FilePath m_homeDir;
+	FilePath m_homeDir;
 
 public:
 
-	GameData() = delete;
+	GameData() {}
 
-	GameData(const FilePath& gameDir);
+	void setPath(const FilePath& gameDir);
 
 	void loadGames();
 
-	const Array<Game>& getList();
+	const Array<Game>& getList() const;
 
 };

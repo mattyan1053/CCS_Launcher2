@@ -85,6 +85,18 @@
     <Filter Include="Header Files\GameController">
       <UniqueIdentifier>{342c0309-e66b-4c1a-909c-eda92c9224c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Select">
+      <UniqueIdentifier>{f542adec-d97d-4f94-bac7-907ef60afa01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Select">
+      <UniqueIdentifier>{b82b9a67-17a6-41bf-8440-afd7d0e53680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Summary">
+      <UniqueIdentifier>{91c3a6f7-3905-4ebd-9f5b-1c2a56a1e9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Summary">
+      <UniqueIdentifier>{e837d74e-fa20-4fce-b2bd-8c6c86d1a62a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -94,6 +106,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lancher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Select.cpp">
+      <Filter>Source Files\Select</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Summary.cpp">
+      <Filter>Source Files\Summary</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Source Files\Select</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -318,6 +348,39 @@
     </ClInclude>
     <ClInclude Include="GameInfo.hpp">
       <Filter>Header Files\GameController</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Select.hpp">
+      <Filter>Header Files\Select</Filter>
+    </ClInclude>
+    <ClInclude Include="Summary.hpp">
+      <Filter>Header Files\Summary</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineFrame.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.hpp">
+      <Filter>Header Files\Select</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateProcess.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
